@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-init-method="inicializa" default-destroy-method="destruye">
+
+	<bean id="persona1" class="com.spring.entidad.Persona">
+		<property name="id" value="1" />
+		<property name="nombre" value="maxi" />
+		<property name="apellido" value="guzman" />
+		<property name="edad" value="3" />
+		<property name="materia" ref="materia" />
+	</bean>
+
+	<bean id="persona2" class="com.spring.entidad.Persona">
+		<property name="id" value="1" />
+		<property name="nombre" value="ivan" />
+		<property name="apellido" value="apaza" />
+		<property name="edad" value="3" />
+		<property name="materia" ref="materia" />		
+	</bean>
+	
+	<bean id="persona3" class="com.spring.entidad.Persona">
+		<property name="id" value="1" />
+		<property name="nombre" value="sergio" />
+		<property name="apellido" value="cobreloa" />
+		<property name="edad" value="3" />
+		<property name="materia" ref="materia" />		
+	</bean>
+
+	<bean id="materia" class="com.spring.entidad.Materia">
+		<property name="id" value="1" />
+		<property name="nombre" value="Matematica" />
+		<property name="horas" value="40" />
+	</bean>
+
+	<bean id="service" class="com.spring.service.PersonaServiceImp">
+		<property name="personas">
+		    <list>
+		     <ref bean="persona1" />
+		     <ref bean="persona2" />
+		     <ref bean="persona3" />
+		    </list>
+		</property>
+	</bean>
+
+	<bean id="controller" class="com.spring.controller.PersonaController" >
+		        <constructor-arg ref="service"/>
+	</bean>
+	
+
+
+</beans>
